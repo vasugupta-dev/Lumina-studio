@@ -1,0 +1,90 @@
+{
+ "tops": {
+  "available": true,
+  "reason": "built and self-tested",
+  "path": "/tmp/opencode/lumina_tops/tops_int8_471d487c99b1_pthread.so",
+  "version": 4,
+  "source": "lumina_framework/kernels/tops_int8.c",
+  "build_dir": "/tmp/opencode/lumina_tops",
+  "disabled_env": null
+ },
+ "int8_parity": {
+  "kernel_vs_numpy_max": 0.00010312174435966881,
+  "numba_vs_numpy_max": 4.20006192598521e-05
+ },
+ "q4_0_parity": {
+  "kernel_vs_numpy_max": 5.6645737913640914e-05
+ },
+ "fp16_parity": {
+  "rel_max": 0.0005979374400340021
+ },
+ "gemm_parity": {
+  "gemm_vs_gemv_max": 0.0
+ },
+ "speed_int8_gemv_11008x4096": {
+  "tops_ms": 3.167,
+  "tops_median_ms": 3.317,
+  "numba_ms": 22.252,
+  "numba_median_ms": 22.288,
+  "speedup": 7.03,
+  "gmac_s_tops": 28.48,
+  "gmac_s_numba": 4.05
+ },
+ "gemm_speed_M32_11008x4096": {
+  "int8_ms": 75.8,
+  "blas_ms": 336.6,
+  "blas_over_int8": 4.44,
+  "int8_gmac_s": 38.1,
+  "blas_gflops": 8.6
+ },
+ "speed_q4_0_gemv_11008x4096": {
+  "q4_0_ms": 5.204,
+  "q4_0_median_ms": 5.228,
+  "vs_int8_kernel": 1.64,
+  "gmac_s_q4_0": 17.33
+ },
+ "hybrid_threshold_sweep": {
+  "128": {
+   "tops_ms": 0.314,
+   "numba_ms": 0.303,
+   "ratio": 0.96
+  },
+  "256": {
+   "tops_ms": 0.568,
+   "numba_ms": 0.57,
+   "ratio": 1.0
+  },
+  "512": {
+   "tops_ms": 0.313,
+   "numba_ms": 1.112,
+   "ratio": 3.55
+  },
+  "1024": {
+   "tops_ms": 0.417,
+   "numba_ms": 2.135,
+   "ratio": 5.12
+  },
+  "4096": {
+   "tops_ms": 1.255,
+   "numba_ms": 8.686,
+   "ratio": 6.92
+  }
+ },
+ "edge_shapes": {
+  "ok": true
+ },
+ "fallback_disabled": {
+  "stdout": "avail False unavailable: disabled by LUMINA_TOPS_DISABLE=1\nfinite True max 1264.6292724609375",
+  "ok": true
+ },
+ "decode_loop_32_layers": {
+  "shapes": "d=1024 inter=4096 layers=32",
+  "tops_s": 0.0925,
+  "numba_s": 0.4907,
+  "fp32_s": 0.3049,
+  "speedup_vs_numba": 5.3,
+  "speedup_vs_fp32": 3.3,
+  "tokens_per_s_equivalent": 20312.32
+ },
+ "wall_s": 17.5
+}

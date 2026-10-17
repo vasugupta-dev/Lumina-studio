@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d10">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="app.css?v=r3">
+<title>Lumina Studio</title>
+</head>
+<body data-theme="dark">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="lum-l" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0%" stop-color="#3fd4ff"/><stop offset="52%" stop-color="#4f7cff"/><stop offset="100%" stop-color="#8b3ff2"/>
+</linearGradient>
+<symbol id="logo-lumina" viewBox="0 0 64 64">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0e1330"/>
+  <path d="M22 14 q-6 0 -6 7 v22 q0 9 9 9 h19 q6 0 4 -5 l-3 -3 q-2 -2 -5 -2 h-11 v-21 q0 -7 -7 -7Z" fill="url(#lum-l)"/>
+  <path d="M44 22 l2.1 4.9 4.9 2.1 -4.9 2.1 -2.1 4.9 -2.1 -4.9 -4.9 -2.1 4.9 -2.1Z" fill="#5ef2c8"/>
+</symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- Icons: Lucide v0.469.0 (ISC license), stroke 1.8 -->
+<symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></g></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.5 16.5 4.5 4.5"/></g></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.7 4.734a2 2 0 0 0 1.994 0L20.7 7"/></g></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></g></symbol>
+<symbol id="i-swarm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></g></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></g></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></g></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></g></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M21 9H3"/><path d="M21 15H3"/></g></symbol>
+<symbol id="i-flask" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></g></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></g></symbol>
+<symbol id="i-term" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7 11 2-2-2-2"/><path d="M11 13h4"/><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/></g></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></g></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/></g></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></g></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></g></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></g></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></g></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v5a6 6 0 0 1-12 0Z"/><path d="M6 6H4a2 2 0 0 0 2 4"/><path d="M18 6h2a2 2 0 0 1-2 4"/><path d="M12 15v3"/><path d="M8 21h8"/><path d="M10 21v-1a2 2 0 0 1 4 0v1"/></g></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98m-.1-9.98L8.51 11.49"/></g></symbol>
+<symbol id="i-data" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></g></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></g></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></g></symbol>
+</defs></svg>
+
+<aside class="side">
+  <button class="brand" id="home-btn" type="button" title="Home">
+    <svg class="logo-svg" width="30" height="30"><use href="#logo-lumina"/></svg>
+    <span class="wordmark">LUMINA <span class="thin">STUDIO</span></span>
+  </button>
+  <button class="newchat" id="thread-new" type="button"><svg class="ic"><use href="#i-plus"/></svg><span>New Chat</span><kbd>Ctrl K</kbd></button>
+  <nav class="nav" aria-label="Views">
+    <button data-view="chat"><svg class="ic"><use href="#i-chat"/></svg>Chat</button>
+    <button data-view="mylumina"><svg class="ic"><use href="#i-folder"/></svg>My Lumina</button>
+    <button data-view="tasks"><svg class="ic"><use href="#i-clock"/></svg>Tasks</button>
+    <button data-view="slides"><svg class="ic"><use href="#i-layers"/></svg>Slides</button>
+    <button data-view="media"><svg class="ic"><use href="#i-image"/></svg>Media</button>
+    <button data-view="swarm"><svg class="ic"><use href="#i-swarm"/></svg>Swarm</button>
+    <button data-view="research"><svg class="ic"><use href="#i-pen"/></svg>Deep Research</button>
+    <button data-view="docs"><svg class="ic"><use href="#i-doc"/></svg>Docs</button>
+    <button data-view="work"><svg class="ic"><use href="#i-flask"/></svg>Work <em>Beta</em></button>
+    <button data-view="code"><svg class="ic"><use href="#i-code"/></svg>Code</button>
+    <button data-view="claw"><svg class="ic"><use href="#i-term"/></svg>Claw</button>
+    <button data-view="agent"><svg class="ic"><use href="#i-bolt"/></svg>Agent</button>
+    <button data-view="models"><svg class="ic"><use href="#i-box"/></svg>Models</button>
+    <button data-view="arena"><svg class="ic"><use href="#i-trophy"/></svg>Arena</button>
+    <button data-view="graph"><svg class="ic"><use href="#i-share"/></svg>Code Graph</button>
+    <button data-view="claims"><svg class="ic"><use href="#i-data"/></svg>Claims</button>
+    <button data-view="settings"><svg class="ic"><use href="#i-gear"/></svg>Settings</button>
+  </nav>
+  <div class="side-foot">
+    <span id="load-dot" class="dot"></span><span id="load-label">no model</span>
+    <span class="sp"></span>
+    <span class="theme-dots" role="group" aria-label="Theme">
+      <button data-t="light" type="button" title="Light"></button>
+      <button data-t="dark" type="button" title="Dark"></button>
+      <button data-t="oled" type="button" title="OLED"></button>
+    </span>
+  </div>
+</aside>
+
+<header class="mtop">
+  <button id="drawer-btn" type="button" aria-label="Menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+  <svg class="logo-svg" width="26" height="26"><use href="#logo-lumina"/></svg>
+  <span class="wordmark">LUMINA <span class="thin">STUDIO</span></span>
+</header>
+<div class="scrim hidden" id="scrim"></div>
+
+<main>
+  <div class="topright"><button class="pill" id="plan-pill" type="button"><svg class="ic"><use href="#i-bolt"/></svg><span id="tps-label">lumina local</span></button></div>
+
+  <section class="view active" id="view-chat">
+    <div class="hero">
+      <div class="hero-text">
+        <h1 id="hero-hi">Hey, let's build something</h1>
+        <p id="assistant-status" class="hero-status" aria-live="polite"></p>
+      </div>
+    </div>
+    <form class="composer" id="composer">
+      <div id="attach-chips" class="attach-chips hidden"></div>
+      <div id="slashmenu" class="slashmenu hidden"></div>
+      <textarea id="prompt" rows="2" placeholder='Type "/" for commands'></textarea>
+      <div class="composer-bar">
+        <input type="file" id="attach-file" class="vh" multiple tabindex="-1" aria-hidden="true">
+        <button id="attach" type="button" title="Attach files"><svg class="ic"><use href="#i-plus"/></svg></button>
+        <span class="sp"></span>
+        <button id="tg-ground" type="button" class="tgl" aria-pressed="false" title="Answer only from retrieved evidence (grounding gate; refusals are honest)">Ground</button>
+        <button id="tg-skill" type="button" class="tgl" aria-pressed="false" title="Auto-fetch the best-matching skill for each message (only when confident)">Skill</button>
+        <select id="mode-pick" aria-label="Reply length"><option>Instant</option><option>High</option></select>
+        <span id="charcount" class="mono dim">0</span>
+        <button id="send" type="submit" title="Send"><svg class="ic"><use href="#i-send"/></svg></button>
+      </div>
+    </form>
+    <div id="messages" class="messages"></div>
+    <div id="skills-strip" class="strip"></div>
+    <div class="chips">
+      <button data-view="slides" type="button"><svg class="ic"><use href="#i-layers"/></svg>Slides</button>
+      <button data-view="swarm" type="button"><svg class="ic"><use href="#i-swarm"/></svg>Swarm</button>
+      <button data-view="research" type="button"><svg class="ic"><use href="#i-pen"/></svg>Deep Research</button>
+      <button data-view="docs" type="button"><svg class="ic"><use href="#i-doc"/></svg>Docs</button>
+    </div>
+  </section>
+
+  <section class="view" id="view-mylumina"><div class="wrap">
+    <h2>My Lumina</h2>
+    <form id="thread-search-form" class="form"><input id="thread-search" placeholder="Search chats…" autocomplete="off"></form>
+    <ul id="mylumina-list" class="rows"></ul>
+  </div></section>
+
+  <section class="view" id="view-models"><div class="wrap">
+    <h2>My Models</h2>
+    <div class="loaderbar">
+      <select id="model-pick" aria-label="Model"><option value="">Select a model…</option></select>
+      <button id="model-load" type="button">Load</button><button id="model-unload" type="button">Unload</button>
+    </div>
+    <div id="lib-grid" class="cards"></div>
+    <h2>Library — curated, fit-checked for this machine</h2>
+    <div id="catalog-grid" class="cards"></div>
+    <h2>Discover on Hugging Face</h2>
+    <form id="hf-form" class="form"><input id="hf-q" placeholder="Search Hugging Face…" autocomplete="off"><button type="submit">Search</button></form>
+    <div id="hf-grid" class="cards"></div>
+    <form id="dl-form" class="form"><input id="dl-repo" placeholder="Qwen/Qwen2.5-0.5B" autocomplete="off"><button type="submit">Download</button></form>
+    <pre id="dl-status" class="mono">idle</pre>
+  </div></section>
+
+  <section class="view" id="view-docs"><div class="wrap">
+    <h2>Docs · Websites · Sheets</h2>
+    <p class="hint">Paste text, a URL, or CSV. It becomes context for your next chat.</p>
+    <form id="doc-form" class="form"><input id="doc-input" placeholder="https://… or paste text / CSV rows" autocomplete="off"><button type="submit">Attach</button></form>
+    <div class="seg" id="doc-filter">
+      <button type="button" data-f="all" class="on">All</button><button type="button" data-f="doc">Docs</button><button type="button" data-f="site">Websites</button><button type="button" data-f="sheet">Sheets</button>
+    </div>
+    <ul id="doc-list" class="rows"></ul>
+    <h3>RAG search (server-side BM25)</h3>
+    <form id="rag-form" class="form"><input id="rag-q" placeholder="Search the chunk store…" autocomplete="off"><button type="submit">Search</button></form>
+    <div id="rag-out" class="rows"></div>
+    <p class="hint">Attach a doc above and it also lands in the server chunk store; search ranks chunks by BM25 and cites the source.</p>
+  </div></section>
+
+  <section class="view" id="view-slides"><div class="wrap">
+    <h2>Slides → Video</h2>
+    <p class="hint">Add slides, preview, export real WebM.</p>
+    <form id="slide-form" class="form"><input id="slide-title" placeholder="Slide title" autocomplete="off"><button type="submit">Add slide</button></form>
+    <div id="slide-strip" class="strip"></div>
+    <div class="actions-row"><button id="video-export" type="button">Export WebM</button><button id="slides-clear" type="button">Clear</button><span id="video-status" class="hint"></span></div>
+    <div class="stage"><canvas id="stage" width="640" height="360"></canvas></div>
+  </div></section>
+
+  <section class="view" id="view-media"><div class="wrap">
+    <h2>Media generation</h2>
+    <p class="hint">Image, video and audio through declared backends (ComfyUI workflows, A1111, CLI tools). There is no local diffusion engine on this phone: backends are remote or CLI, the AI can call them as tools in Agent mode, and the LLM is unloaded first when the residency policy says so.</p>
+    <div id="media-residency" class="hint">checking residency…</div>
+    <ul id="media-backends" class="rows"></ul>
+    <h3>Generate</h3>
+    <form id="media-form" class="form">
+      <select id="media-cap" title="capability">
+        <option value="image">image</option>
+        <option value="video">video</option>
+        <option value="audio_tts">audio (speech)</option>
+        <option value="upscale">upscale / img2img</option>
+        <option value="any-workflow">any workflow</option>
+      </select>
+      <select id="media-workflow" title="workflow"><option value="">workflow: auto</option></select>
+      <input id="media-prompt" placeholder="Prompt" autocomplete="off">
+      <input id="media-neg" placeholder="Negative prompt (optional)" autocomplete="off">
+      <input id="media-w" type="number" value="1024" min="64" max="4096" title="width">
+      <input id="media-h" type="number" value="1024" min="64" max="4096" title="height">
+      <input id="media-steps" type="number" value="20" min="1" max="150" title="steps">
+      <input id="media-seed" placeholder="seed (random)" autocomplete="off">
+      <select id="media-policy" title="LLM residency during the job">
+        <option value="">residency: server default</option>
+        <option value="off">keep LLM loaded</option>
+        <option value="unload">unload LLM for the job</option>
+        <option value="reload_after">unload, then reload after</option>
+      </select>
+      <button type="submit">Generate</button>
+    </form>
+    <pre id="media-status" class="mono">idle</pre>
+    <h3>Jobs</h3>
+    <div id="media-jobs" class="grid2"></div>
+  </div></section>
+
+  <section class="view" id="view-swarm"><div class="wrap">
+    <h2>Swarm compare</h2>
+    <p class="hint">Same prompt, two temperatures, side by side.</p>
+    <form id="swarm-form" class="form"><input id="swarm-prompt" placeholder="Prompt" autocomplete="off"><button type="submit">Run both</button></form>
+    <div class="grid2">
+      <div class="card"><h3>temp 0.0</h3><div id="swarm-a" class="mono"></div></div>
+      <div class="card"><h3>temp 0.7</h3><div id="swarm-b" class="mono"></div></div>
+    </div>
+  </div></section>
+
+  <section class="view" id="view-research"><div class="wrap">
+    <h2>Deep Research</h2>
+    <form id="res-form" class="form"><input id="res-q" placeholder="Topic" autocomplete="off"><button type="submit">Research</button></form>
+    <div id="res-out"></div>
+  </div></section>
+
+  <section class="view" id="view-tasks"><div class="wrap">
+    <h2>Scheduled Tasks</h2>
+    <form id="task-form" class="form"><input id="task-text" placeholder="Saved prompt" autocomplete="off"><button type="submit">Save</button></form>
+    <ul id="task-list" class="rows"></ul>
+  </div></section>
+
+  <section class="view" id="view-code"><div class="wrap">
+    <h2>Lumina Code</h2>
+    <p class="hint">Chat with a code-review system prompt.</p>
+    <form id="code-form" class="form"><input id="code-q" placeholder="Ask about code…" autocomplete="off"><button type="submit">Ask</button></form>
+    <div id="code-out" class="mono"></div>
+  </div></section>
+
+  <section class="view" id="view-claw"><div class="wrap">
+    <h2>Lumina Claw — console</h2>
+    <p class="hint">Allowlisted commands only. Real execution, server-side.</p>
+    <form id="term-form" class="form"><input id="term-cmd" placeholder="ls /tmp" autocomplete="off"><button type="submit">Run</button></form>
+    <pre id="term-out" class="mono">ready</pre>
+  </div></section>
+
+  <section class="view" id="view-work"><div class="wrap">
+    <h2>Lumina Work <em>Beta</em></h2>
+    <div class="card"><h3>Convert → Lumina (real codec, on-device)</h3>
+      <form id="convert-form" class="form"><input name="input" required placeholder="/tmp/model.gguf" autocomplete="off"><input name="output" required placeholder="/tmp/model_int4.lumina" autocomplete="off"><select name="rung"><option>int4</option><option>int3</option><option>int2</option><option>binary</option></select><button type="submit">Build command</button></form>
+      <form id="moe-form" class="form"><input name="experts" type="number" min="0" max="64" value="0" title="Virtual-MoE experts (0 = off)"><input name="top_k" type="number" min="1" max="8" value="2" title="Experts routed per token"><span class="hint">Virtual MoE: dense MLPs → routed experts</span></form>
+      <div class="actions-row"><button id="convert-run" type="button">Run conversion</button><span id="convert-status" class="hint" aria-live="polite"></span></div>
+      <pre id="convert-cmd" class="mono"></pre>
+      <div id="convert-result" class="card hidden" style="background:var(--surface-2)"></div></div>
+    <div class="card"><h3>Doctor + plan — verify before you load</h3>
+      <form id="doctor-form" class="form"><input name="id" required placeholder="model id from My Models" autocomplete="off"><button type="submit">Diagnose</button></form>
+      <div id="doctor-out" class="card hidden" style="background:var(--surface-2)"></div></div>
+    <div class="card"><h3>Draft heads — train EAGLE + MTP for the loaded model</h3>
+      <div class="actions-row"><button id="train-draft" type="button">Train draft heads</button><span id="train-status" class="hint"></span></div>
+      <p class="hint">Trains on-device when the model is small enough; refuses honestly when it is not. Chat with "spec": "eagle" uses the head.</p></div>
+    <div class="card"><h3>Inspect — honest bytes of any library file</h3>
+      <form id="inspect-form" class="form"><input name="path" required placeholder="/tmp/model_int4.lumina" autocomplete="off"><button type="submit">Inspect</button></form>
+      <div id="inspect-result" class="card hidden" style="background:var(--surface-2)"></div></div>
+    <div class="card"><h3>Hardware — every compute part, measured</h3>
+      <div class="actions-row"><button id="hw-run" type="button">Probe hardware + Qwen recipe</button></div>
+      <div id="hw-out" class="card hidden" style="background:var(--surface-2)"></div></div>
+    <div class="card"><h3>Benchmark</h3><div class="actions-row"><button id="bench-run" type="button">Run tiny bench</button></div><pre id="bench-out" class="mono">not run</pre><div id="bench-targets"></div></div>
+  </div></section>
+
+  <section class="view" id="view-arena"><div class="wrap">
+    <h2>Arena — side by side</h2>
+    <p class="hint">One prompt, two model sources, run sequentially. Vote after both finish. Speeds are honest wall-clock.</p>
+    <div class="loaderbar">
+      <select id="arena-a" aria-label="Model A"></select>
+      <span class="hint">vs</span>
+      <select id="arena-b" aria-label="Model B"></select>
+      <button id="arena-run" type="button">Run both</button>
+    </div>
+    <form id="arena-form" class="form"><input id="arena-q" placeholder="Same prompt for both…" autocomplete="off"><button type="submit">Send</button></form>
+    <div class="grid2">
+      <div class="card"><h3>A</h3><div id="arena-out-a" class="mono"></div><div id="arena-meta-a" class="hint"></div></div>
+      <div class="card"><h3>B</h3><div id="arena-out-b" class="mono"></div><div id="arena-meta-b" class="hint"></div></div>
+    </div>
+    <div class="actions-row" id="arena-votes">
+      <button id="vote-a" type="button" disabled>A wins</button><button id="vote-tie" type="button" disabled>Tie</button><button id="vote-b" type="button" disabled>B wins</button>
+    </div>
+    <div id="arena-score" class="hint"></div>
+    <h3>ELO leaderboard (server-side, K=32)</h3>
+    <div id="elo-out" class="rows"></div>
+  </div></section>
+
+  <section class="view" id="view-graph"><div class="wrap">
+    <h2>Code Graph</h2>
+    <p class="hint">Static import graph of this repository, built by the app at startup.</p>
+    <div id="graph-stats" class="cards"></div>
+    <form id="graph-search-form" class="form"><input id="graph-q" placeholder="Search files…" autocomplete="off"><button type="submit">Search</button></form>
+    <div id="graph-list" class="rows"></div>
+    <div id="graph-detail" class="card hidden"></div>
+  </div></section>
+
+  <section class="view" id="view-claims"><div class="wrap">
+    <h2>Claims Board</h2>
+    <p class="hint">Every quality claim with its honest label. Verified means a measurement backs it.</p>
+    <div id="claims-list"></div>
+  </div></section>
+
+  <section class="view" id="view-agent"><div class="wrap">
+    <h2>Agent</h2>
+    <p class="hint">Tool-using loop with real execution: every step is a model call, every tool refusal is reported. builtin = Lumina's own loop; SDK = the OpenAI Agents SDK (optional dependency, lazy one-time import).</p>
+    <div class="card"><h3>Engine</h3>
+      <div class="form">
+        <select id="agent-engine" title="Which loop runs the agent"><option value="auto">auto</option><option value="sdk">openai-agents SDK</option><option value="builtin">builtin loop</option></select>
+        <button id="agent-warm" type="button">Warm up SDK</button>
+        <span id="agent-status" class="hint">checking…</span>
+      </div>
+    </div>
+    <form id="agent-form" class="form"><input id="agent-prompt" placeholder="Ask the agent to do something on this machine" autocomplete="off"><button type="submit">Run agent</button></form>
+    <pre id="agent-steps" class="mono">ready</pre>
+  </div></section>
+
+  <section class="view" id="view-settings"><div class="wrap">
+    <h2>Settings</h2>
+    <div class="seg setting-tabs" id="setting-tabs" role="tablist" aria-label="Settings sections">
+      <button type="button" data-tab="appearance" role="tab" class="on">Appearance</button>
+      <button type="button" data-tab="cloud" role="tab">Cloud models</button>
+      <button type="button" data-tab="mcp" role="tab">MCPs</button>
+      <button type="button" data-tab="computer" role="tab">Computer</button>
+      <button type="button" data-tab="automation" role="tab">Automation</button>
+      <button type="button" data-tab="memory" role="tab">Memory</button>
+      <button type="button" data-tab="advanced" role="tab">Advanced</button>
+    </div>
+    <div class="card" data-setting="appearance"><h3>Appearance</h3>
+      <div class="seg" id="theme-seg"><button type="button" data-theme="dark">Dark</button><button type="button" data-theme="light">Light</button><button type="button" data-theme="oled">OLED</button></div>
+    </div>
+    <div class="card hidden" data-setting="cloud"><h3>Cloud models</h3>
+      <p class="hint">Use an OpenAI-compatible API alongside local models. The key is stored only on this device and never shown back.</p>
+      <div class="grid2c">
+        <label class="field">Enabled<input type="checkbox" id="cloud-enabled"></label>
+        <label class="field">Provider<select id="cloud-provider"><option value="custom">Custom endpoint</option><option value="openai">OpenAI</option><option value="openrouter">OpenRouter</option></select></label>
+        <label class="field">Base URL<input id="cloud-url" placeholder="https://api.openai.com/v1" autocomplete="off"></label>
+        <label class="field">Model<input id="cloud-model" placeholder="gpt-4o-mini" autocomplete="off"></label>
+        <label class="field">API key<input id="cloud-key" type="password" placeholder="(unchanged)" autocomplete="new-password"></label>
+      </div>
+      <div class="actions-row"><button id="cloud-save" type="button">Save</button><button id="cloud-test" type="button">Test connection</button></div>
+      <div id="cloud-status" class="hint" aria-live="polite"></div>
+    </div>
+    <div class="card hidden" data-setting="mcp"><h3>MCP registry — 1000+ preconfigured, lazily started</h3>
+      <form id="mcp-search-form" class="form"><input id="mcp-q" placeholder="Search 1000+ MCP configs…" autocomplete="off"><button type="submit">Search</button></form>
+      <div id="mcp-stats" class="hint"></div>
+      <div id="mcp-grid" class="rows"></div>
+      <p class="hint">Curated servers from the public MCP ecosystem plus preconfigured variants (scopes/paths/DSNs) — variants are configs, not separate software. Nothing runs until you start it; a missing runtime (npx/uvx) returns its install hint.</p>
+    </div>
+    <div class="card hidden" data-setting="computer"><h3>Operator mode — whole computer</h3>
+      <p class="hint">Lets Lumina run commands, read and write files, launch desktop apps and drive a real Chromium browser. Off by default. On a loopback bind it toggles freely; on a LAN bind an API token is required. Every action is appended to the audit log below — nothing here hides what ran.</p>
+      <div class="actions-row">
+        <label class="field check">Full access<input type="checkbox" id="op-full"></label>
+        <label class="field">Working directory<input id="op-cwd" placeholder="/home/you" autocomplete="off"></label>
+        <button id="op-cwd-save" type="button">Save cwd</button>
+        <button id="op-audit" type="button">Audit log</button>
+      </div>
+      <div id="op-status" class="hint" aria-live="polite"></div>
+      <div id="op-audit-out" class="rows"></div>
+    </div>
+    <div class="card hidden" data-setting="computer"><h3>Files</h3>
+      <div class="actions-row">
+        <input id="fs-path" placeholder="~ or /sdcard/…" autocomplete="off" class="grow">
+        <button id="fs-list" type="button">List</button>
+        <button id="fs-up" type="button">Up</button>
+        <button id="fs-home" type="button">Home</button>
+      </div>
+      <div class="actions-row">
+        <input id="fs-search-q" placeholder="search name or content" autocomplete="off" class="grow">
+        <button id="fs-search" type="button">Search</button>
+      </div>
+      <div id="fs-out" class="rows"></div>
+      <pre id="fs-view" class="record hidden"></pre>
+    </div>
+    <div class="card hidden" data-setting="computer"><h3>Browser — real Chromium</h3>
+      <div class="actions-row">
+        <input id="br-url" placeholder="https://…" autocomplete="off" class="grow">
+        <button id="br-go" type="button">Open</button>
+        <button id="br-text" type="button">Read text</button>
+        <button id="br-shot" type="button">Screenshot</button>
+        <button id="br-close" type="button">Close browser</button>
+      </div>
+      <div class="actions-row">
+        <input id="br-sel" placeholder="CSS selector" autocomplete="off" class="grow">
+        <input id="br-val" placeholder="value" autocomplete="off" class="grow">
+        <button id="br-fill" type="button">Fill</button>
+        <button id="br-type" type="button">Type (human)</button>
+        <button id="br-click" type="button">Click</button>
+        <button id="br-enter" type="button">Enter</button>
+      </div>
+      <div id="br-status" class="hint" aria-live="polite"></div>
+      <pre id="br-text-out" class="record"></pre>
+      <img id="br-shot-img" class="shot" alt="browser screenshot" hidden>
+    </div>
+    <div class="card hidden" data-setting="computer"><h3>Apps</h3>
+      <div class="actions-row">
+        <input id="app-name" placeholder="firefox / chromium / code / …" autocomplete="off" class="grow">
+        <button id="app-launch" type="button">Launch</button>
+        <button id="apps-refresh" type="button">Refresh</button>
+      </div>
+      <div id="apps-out" class="hint"></div>
+    </div>
+    <div class="card hidden" data-setting="automation"><h3>Custom MCP builder</h3>
+      <p class="hint">Author your own MCP server. Lumina writes a real, dependency-free JSON-RPC stdio server (initialize / tools/list / tools/call) that you can also open and edit by hand. Handlers: echo, command, fetch_url, read_file, write_file, http_json, datetime.</p>
+      <div class="grid2c">
+        <label class="field">Id<input id="cm-id" placeholder="my-tools" autocomplete="off"></label>
+        <label class="field">Name<input id="cm-name" placeholder="My tools"></label>
+        <label class="field">Description<input id="cm-desc" placeholder="what it is for"></label>
+      </div>
+      <label class="field">Tools JSON<textarea id="cm-tools" rows="9" spellcheck="false" placeholder="[]"></textarea></label>
+      <div class="actions-row">
+        <button id="cm-load-example" type="button">Load example</button>
+        <button id="cm-save" type="button">Save server</button>
+        <button id="cm-test" type="button">Test (real round-trip)</button>
+        <button id="cm-list" type="button">Refresh list</button>
+      </div>
+      <div id="cm-status" class="hint" aria-live="polite"></div>
+      <div id="cm-servers" class="rows"></div>
+      <pre id="cm-test-out" class="record"></pre>
+    </div>
+    <div class="card hidden" data-setting="automation"><h3>Custom skills</h3>
+      <p class="hint">User skills appear in the chat skills strip next to the built-ins and run through the loaded model. Use {input} where the pasted text goes.</p>
+      <div class="grid2c">
+        <label class="field">Id<input id="sk-id" placeholder="haiku-ify" autocomplete="off"></label>
+        <label class="field">Description<input id="sk-desc" placeholder="turn text into a haiku"></label>
+      </div>
+      <label class="field">Prompt<textarea id="sk-prompt" rows="4" spellcheck="false" placeholder="Rewrite as a haiku:\n{input}"></textarea></label>
+      <div class="actions-row"><button id="sk-save" type="button">Save skill</button><button id="sk-list" type="button">Show all skills</button></div>
+      <div id="sk-out" class="rows"></div>
+    </div>
+    <div class="card hidden" data-setting="automation"><h3>Workflows</h3>
+      <p class="hint">Typed steps: chat, skill, exec, fetch_url, mcp, browser, fs, app, branch, set, echo. Vars resolve as ${step.output} from earlier steps. Steps stop at the first hard error unless the step sets continue_on_error.</p>
+      <label class="field">Steps JSON<textarea id="wf-steps" rows="9" spellcheck="false" placeholder="[]"></textarea></label>
+      <div class="actions-row"><button id="wf-example" type="button">Load example</button><button id="wf-run" type="button">Run workflow</button></div>
+      <pre id="wf-out" class="record"></pre>
+    </div>
+    <div class="card hidden" data-setting="memory"><h3>Memory tiers</h3>
+      <div id="memory-stats" class="cards"></div>
+      <div class="actions-row"><button id="mem-archive" type="button">Archive current chat</button><button id="mem-refresh" type="button">Refresh</button></div>
+      <div id="memory-list" class="rows"></div>
+      <p class="hint">T1 lives in this browser. Archived threads move to the server and can be restored or forgotten any time.</p>
+    </div>
+    <div class="card hidden" data-setting="advanced"><h3>Defaults</h3>
+      <div class="grid2c">
+        <label class="field">System prompt<textarea id="cfg-system" rows="3"></textarea></label>
+        <label class="field">Temperature <span id="temp-v" class="mono">0</span><input id="cfg-temp" type="range" min="0" max="1.5" step="0.1" value="0"></label>
+        <label class="field">Max tokens<input id="cfg-maxtok" type="number" min="1" max="128" value="64"></label>
+        <label class="field check">Fun mode<input id="cfg-fun" type="checkbox"></label>
+      </div>
+    </div>
+    <div class="card hidden" data-setting="advanced"><h3>Request log</h3>
+      <div class="actions-row"><button id="logs-refresh" type="button">Refresh</button><span class="hint">paths only — bodies and keys are never logged</span></div>
+      <div id="logs-out" class="rows"></div></div>
+    <div class="card hidden" data-setting="advanced"><h3>Target record</h3><div id="status-record" class="record"></div></div>
+  </div></section>
+</main>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script src="app.js?v=r4"></script>
+</body>
+</html>

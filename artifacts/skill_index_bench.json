@@ -1,0 +1,18 @@
+{
+ "n": 100000,
+ "build_s": 2.6441,
+ "approx_bytes": 95965384,
+ "tracemalloc_peak_mb": 91.552,
+ "p50_ms": 10.7878,
+ "p95_ms": 12.7956,
+ "accuracy_top1": 1.0,
+ "accuracy_top5": 1.0,
+ "device": {
+  "system": "Linux",
+  "machine": "aarch64",
+  "release": "6.17.0-PRoot-Distro",
+  "python": "3.14.4",
+  "cpu_count": 8
+ },
+ "note": "1M is a projection, not measured; measured on the phone (aarch64)"
+}

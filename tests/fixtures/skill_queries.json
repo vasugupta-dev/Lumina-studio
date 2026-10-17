@@ -1,0 +1,611 @@
+{
+ "source": "tests/fixtures/skill_queries.json - skills embedded from app/server/serve.py SKILLS (30 builtins) at generation time; labels are hand-written, not model-generated.",
+ "note": "Queries target one skill each as a human would read the 30 descriptions. Entries flagged \"hard\" paraphrase with weak lexical overlap; three of them miss top-1 in the current index (measured) and stay in the fixture as an honest record of the lexical ceiling. Genuinely ambiguous pairs (two skills a human could defend) were excluded from this scored set on purpose.",
+ "count": 102,
+ "skills": [
+  {
+   "id": "summarize",
+   "category": "writing",
+   "desc": "Condense text into a tight summary with key points.",
+   "prompt": "Summarize the following text in {n} bullet points, then one sentence.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "extract-json",
+   "category": "data",
+   "desc": "Pull structured data out of messy text as JSON.",
+   "prompt": "Extract the key facts from the text below as a JSON object. Only JSON, no prose.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "code-review",
+   "category": "dev",
+   "desc": "Review code for bugs, edge cases, and clarity.",
+   "prompt": "Review this code. List: (1) bugs, (2) edge cases, (3) clarity issues. Be specific, cite lines.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "unit-tests",
+   "category": "dev",
+   "desc": "Write unit tests for a function.",
+   "prompt": "Write unit tests for the following code. Cover the happy path, boundaries, and failure modes. Output only code.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "commit-message",
+   "category": "dev",
+   "desc": "Turn a diff into a clean commit message.",
+   "prompt": "Write a one-line commit message (imperative, under 72 chars) for this diff, then 3 bullet details if needed.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "release-notes",
+   "category": "dev",
+   "desc": "Generate release notes from commit history.",
+   "prompt": "Write release notes from these commits: group by Added/Changed/Fixed.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "sql-explain",
+   "category": "data",
+   "desc": "Explain a SQL query step by step.",
+   "prompt": "Explain this SQL query step by step, then note performance risks.\n\n```sql\n{input}\n```"
+  },
+  {
+   "id": "csv-insights",
+   "category": "data",
+   "desc": "Surface insights from CSV rows.",
+   "prompt": "Here are CSV rows. List the columns, data quality issues, and 5 insights with evidence.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "regex-explain",
+   "category": "dev",
+   "desc": "Decode a regular expression.",
+   "prompt": "Explain this regex token by token, then give 2 example matches and 2 non-matches.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "regex-gen",
+   "category": "dev",
+   "desc": "Write a regex from a plain-language spec.",
+   "prompt": "Write a regex that matches: {input}\nGive the pattern, a breakdown, and 3 test cases."
+  },
+  {
+   "id": "translate",
+   "category": "writing",
+   "desc": "Translate text, keeping tone.",
+   "prompt": "Translate the following into {lang}, keeping the tone.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "rewrite-tight",
+   "category": "writing",
+   "desc": "Cut wordiness without losing meaning.",
+   "prompt": "Rewrite the text below to be 30% shorter with the same meaning. No filler.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "grammar",
+   "category": "writing",
+   "desc": "Fix grammar and clarity, minimally.",
+   "prompt": "Fix grammar and clarity in this text. Change as little as possible. Output the corrected text only.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "proofread",
+   "category": "writing",
+   "desc": "Deep proofread with change list.",
+   "prompt": "Proofread the text. Output the corrected text, then a numbered list of every change and why.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "plan-features",
+   "category": "thinking",
+   "desc": "Break a feature request into a build plan.",
+   "prompt": "Break this feature request into a concrete build plan: milestones, tasks, risks.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "decision-log",
+   "category": "thinking",
+   "desc": "Turn a decision into a documented record.",
+   "prompt": "Write a decision record for: {input}\nSections: context, options considered, decision, consequences."
+  },
+  {
+   "id": "meeting-notes",
+   "category": "writing",
+   "desc": "Structure raw meeting notes.",
+   "prompt": "Structure these raw notes: decisions, action items (owner + verb), open questions.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "api-review",
+   "category": "dev",
+   "desc": "Review an API design.",
+   "prompt": "Review this API design: naming, consistency, error handling, versioning, security.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "docstring",
+   "category": "dev",
+   "desc": "Write a docstring for code.",
+   "prompt": "Write a clear docstring for this code: purpose, args, returns, raises, one example.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "bug-report",
+   "category": "dev",
+   "desc": "Structure a bug from symptoms.",
+   "prompt": "Turn these symptoms into a structured bug report: expected, actual, steps, suspected cause, severity.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "markdown-table",
+   "category": "data",
+   "desc": "Convert raw data into a Markdown table.",
+   "prompt": "Convert the data below into a clean Markdown table. Keep it faithful.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "cron-gen",
+   "category": "dev",
+   "desc": "Write a cron expression from a schedule.",
+   "prompt": "Write a cron expression (and a human sentence explaining it) for: {input}"
+  },
+  {
+   "id": "yaml-fix",
+   "category": "dev",
+   "desc": "Validate and fix YAML.",
+   "prompt": "Find and fix errors in this YAML. Output the corrected YAML only, then a list of changes.\n\n```yaml\n{input}\n```"
+  },
+  {
+   "id": "python-trace",
+   "category": "dev",
+   "desc": "Trace code execution step by step.",
+   "prompt": "Trace this code with the given input, line by line, then state the output.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "complexity-audit",
+   "category": "dev",
+   "desc": "Audit complexity and hot spots.",
+   "prompt": "Identify the computational complexity and likely hot spots in this code.\n\n```\n{input}\n```"
+  },
+  {
+   "id": "prompt-improve",
+   "category": "thinking",
+   "desc": "Strengthen a prompt.",
+   "prompt": "Improve this prompt: make it specific, add constraints and output format.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "simplify",
+   "category": "thinking",
+   "desc": "Explain something simply, then precisely.",
+   "prompt": "Explain this in one simple sentence anyone gets, then precisely for an expert.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "changelog",
+   "category": "dev",
+   "desc": "Maintain a changelog from changes.",
+   "prompt": "Update this changelog (Keep a Changelog format) from the changes below.\n\n---\n{input}\n---"
+  },
+  {
+   "id": "email-draft",
+   "category": "writing",
+   "desc": "Draft a short professional email.",
+   "prompt": "Draft a short professional email for: {input}\nTone: direct, warm, no filler."
+  },
+  {
+   "id": "todo-extract",
+   "category": "thinking",
+   "desc": "Pull action items from any text.",
+   "prompt": "Extract every action item from the text. Each: verb-first, with owner if present.\n\n---\n{input}\n---"
+  }
+ ],
+ "queries": [
+  {
+   "q": "condense this long article into bullet points",
+   "want": "summarize"
+  },
+  {
+   "q": "give me the key points from this report",
+   "want": "summarize"
+  },
+  {
+   "q": "sum up the main points of this article",
+   "want": "summarize"
+  },
+  {
+   "q": "make a tight summary of the discussion",
+   "want": "summarize"
+  },
+  {
+   "q": "pull the fields out of this text as json",
+   "want": "extract-json"
+  },
+  {
+   "q": "turn this messy paragraph into structured json data",
+   "want": "extract-json"
+  },
+  {
+   "q": "get the key facts out of this email as a json object",
+   "want": "extract-json"
+  },
+  {
+   "q": "review this function for bugs and edge cases",
+   "want": "code-review"
+  },
+  {
+   "q": "check this code for mistakes and cite the lines",
+   "want": "code-review"
+  },
+  {
+   "q": "look for edge cases and unclear parts in this code",
+   "want": "code-review"
+  },
+  {
+   "q": "write tests for this function, cover boundaries",
+   "want": "unit-tests"
+  },
+  {
+   "q": "add test cases for the failure modes of this parser",
+   "want": "unit-tests"
+  },
+  {
+   "q": "cover the happy path and edge cases with tests",
+   "want": "unit-tests"
+  },
+  {
+   "q": "write a commit message for this diff",
+   "want": "commit-message"
+  },
+  {
+   "q": "summarize these changes in one imperative line under 72 chars",
+   "want": "commit-message"
+  },
+  {
+   "q": "give me a one-line git message for the staged changes",
+   "want": "commit-message"
+  },
+  {
+   "q": "the diff is staged, give me a one-liner",
+   "want": "commit-message"
+  },
+  {
+   "q": "generate release notes from these commits",
+   "want": "release-notes"
+  },
+  {
+   "q": "write the added changed fixed sections for the new version",
+   "want": "release-notes"
+  },
+  {
+   "q": "turn the commit history into published release notes",
+   "want": "release-notes"
+  },
+  {
+   "q": "explain this sql query step by step",
+   "want": "sql-explain"
+  },
+  {
+   "q": "my query joins four tables, why is it slow",
+   "want": "sql-explain"
+  },
+  {
+   "q": "what insights can you find in these csv rows",
+   "want": "csv-insights"
+  },
+  {
+   "q": "list data quality issues and insights from this csv",
+   "want": "csv-insights"
+  },
+  {
+   "q": "explain this regular expression token by token",
+   "want": "regex-explain"
+  },
+  {
+   "q": "decode this pattern and give example matches",
+   "want": "regex-explain"
+  },
+  {
+   "q": "write a regex that matches email addresses",
+   "want": "regex-gen"
+  },
+  {
+   "q": "build a regex pattern from this plain english description",
+   "want": "regex-gen"
+  },
+  {
+   "q": "i need a regex for dates with three test cases",
+   "want": "regex-gen"
+  },
+  {
+   "q": "translate this paragraph into spanish",
+   "want": "translate"
+  },
+  {
+   "q": "convert this text to french keeping the same tone",
+   "want": "translate"
+  },
+  {
+   "q": "say this in japanese without changing the tone",
+   "want": "translate"
+  },
+  {
+   "q": "rewrite this to be 30 percent shorter with the same meaning",
+   "want": "rewrite-tight"
+  },
+  {
+   "q": "tighten this copy without losing the meaning",
+   "want": "rewrite-tight"
+  },
+  {
+   "q": "fix the grammar in this text",
+   "want": "grammar"
+  },
+  {
+   "q": "clean up the grammar in this paragraph",
+   "want": "grammar"
+  },
+  {
+   "q": "correct the grammar of this paragraph",
+   "want": "grammar"
+  },
+  {
+   "q": "proofread this text and list every change you make",
+   "want": "proofread"
+  },
+  {
+   "q": "proofread this and give me a numbered list of the changes",
+   "want": "proofread"
+  },
+  {
+   "q": "deep proofread of this text with reasons for every change",
+   "want": "proofread"
+  },
+  {
+   "q": "break this feature request into a build plan",
+   "want": "plan-features"
+  },
+  {
+   "q": "plan the milestones tasks and risks for this new feature",
+   "want": "plan-features"
+  },
+  {
+   "q": "turn this idea into a plan with milestones",
+   "want": "plan-features"
+  },
+  {
+   "q": "write a decision record for this choice",
+   "want": "decision-log"
+  },
+  {
+   "q": "document what options we considered and what we decided",
+   "want": "decision-log"
+  },
+  {
+   "q": "record the context and consequences of this decision",
+   "want": "decision-log"
+  },
+  {
+   "q": "turn these messy meeting notes into decisions and open questions",
+   "want": "meeting-notes"
+  },
+  {
+   "q": "structure these raw meeting notes into decisions and action items",
+   "want": "meeting-notes"
+  },
+  {
+   "q": "unpack this regular expression into simple words",
+   "want": "regex-explain"
+  },
+  {
+   "q": "outline the milestones for launching this feature",
+   "want": "plan-features"
+  },
+  {
+   "q": "turn this changelog draft into keep a changelog format",
+   "want": "changelog"
+  },
+  {
+   "q": "review this api design for naming and versioning",
+   "want": "api-review"
+  },
+  {
+   "q": "critique the security and versioning of my rest api",
+   "want": "api-review"
+  },
+  {
+   "q": "write a docstring for this function",
+   "want": "docstring"
+  },
+  {
+   "q": "document this method with args returns and raises",
+   "want": "docstring"
+  },
+  {
+   "q": "add a clear comment block describing what this code does",
+   "want": "docstring"
+  },
+  {
+   "q": "turn these symptoms into a proper bug report",
+   "want": "bug-report"
+  },
+  {
+   "q": "write expected vs actual behavior and steps to reproduce",
+   "want": "bug-report"
+  },
+  {
+   "q": "document this defect with severity and suspected cause",
+   "want": "bug-report"
+  },
+  {
+   "q": "convert this data into a markdown table",
+   "want": "markdown-table"
+  },
+  {
+   "q": "format these rows as a table for the readme",
+   "want": "markdown-table"
+  },
+  {
+   "q": "make a clean table out of this list of values",
+   "want": "markdown-table"
+  },
+  {
+   "q": "write a cron expression that runs every monday at noon",
+   "want": "cron-gen"
+  },
+  {
+   "q": "write a cron line that runs every five minutes",
+   "want": "cron-gen"
+  },
+  {
+   "q": "i need a cron entry for a nightly job",
+   "want": "cron-gen"
+  },
+  {
+   "q": "find and fix the errors in this yaml file",
+   "want": "yaml-fix"
+  },
+  {
+   "q": "validate this yaml and correct the errors",
+   "want": "yaml-fix"
+  },
+  {
+   "q": "my kubernetes manifest yaml is invalid, fix it",
+   "want": "yaml-fix"
+  },
+  {
+   "q": "trace this python code line by line with the given input",
+   "want": "python-trace"
+  },
+  {
+   "q": "what does this function output, walk through execution",
+   "want": "python-trace"
+  },
+  {
+   "q": "simulate running this code and state what it prints",
+   "want": "python-trace"
+  },
+  {
+   "q": "what is the time complexity of this algorithm",
+   "want": "complexity-audit"
+  },
+  {
+   "q": "find the hot spots and big o of this function",
+   "want": "complexity-audit"
+  },
+  {
+   "q": "audit the algorithmic complexity and profile the hot spots",
+   "want": "complexity-audit"
+  },
+  {
+   "q": "improve this prompt and add constraints",
+   "want": "prompt-improve"
+  },
+  {
+   "q": "make this request to the model more specific with an output format",
+   "want": "prompt-improve"
+  },
+  {
+   "q": "strengthen my prompt for the assistant",
+   "want": "prompt-improve"
+  },
+  {
+   "q": "explain this like i am five, then precisely",
+   "want": "simplify"
+  },
+  {
+   "q": "explain this simply and then for an expert",
+   "want": "simplify"
+  },
+  {
+   "q": "update the changelog from these changes",
+   "want": "changelog"
+  },
+  {
+   "q": "keep a changelog format entry for version 2.1",
+   "want": "changelog"
+  },
+  {
+   "q": "maintain the changelog with the added section",
+   "want": "changelog"
+  },
+  {
+   "q": "draft a short professional email to my manager",
+   "want": "email-draft"
+  },
+  {
+   "q": "write a warm but direct message declining the meeting invite",
+   "want": "email-draft"
+  },
+  {
+   "q": "compose an email asking for a deadline extension",
+   "want": "email-draft"
+  },
+  {
+   "q": "pull every action item out of these notes",
+   "want": "todo-extract"
+  },
+  {
+   "q": "extract the action items from this email thread",
+   "want": "todo-extract"
+  },
+  {
+   "q": "give me a checklist of action items from this transcript",
+   "want": "todo-extract"
+  },
+  {
+   "q": "make this text shorter",
+   "want": "rewrite-tight",
+   "hard": true
+  },
+  {
+   "q": "cut the wordiness out of this paragraph",
+   "want": "rewrite-tight",
+   "hard": true
+  },
+  {
+   "q": "this regex is doing my head in, what does it mean",
+   "want": "regex-explain",
+   "hard": true
+  },
+  {
+   "q": "what does this regex pattern match",
+   "want": "regex-explain",
+   "hard": true
+  },
+  {
+   "q": "find patterns in this csv export",
+   "want": "csv-insights",
+   "hard": true
+  },
+  {
+   "q": "find the trends in this csv file",
+   "want": "csv-insights",
+   "hard": true
+  },
+  {
+   "q": "the warehouse query takes minutes, break down why",
+   "want": "sql-explain",
+   "hard": true
+  },
+  {
+   "q": "explain the joins and the performance risks in this query",
+   "want": "sql-explain",
+   "hard": true
+  },
+  {
+   "q": "my yaml file blows up in the parser, make it valid",
+   "want": "yaml-fix",
+   "hard": true
+  },
+  {
+   "q": "spin this csv into a readable table",
+   "want": "markdown-table",
+   "hard": true
+  },
+  {
+   "q": "clean up my meeting notes with owners and decisions",
+   "want": "meeting-notes",
+   "hard": true
+  },
+  {
+   "q": "is this endpoint design consistent, what about error handling",
+   "want": "api-review",
+   "hard": true
+  },
+  {
+   "q": "list the follow ups with an owner for each",
+   "want": "todo-extract",
+   "hard": true
+  },
+  {
+   "q": "give me a simple one sentence explanation anyone can follow",
+   "want": "simplify",
+   "hard": true
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+  "_lumina": {
+    "id": "wan_txt2video",
+    "capability": "video",
+    "description": "Wan text-to-video, video latents decoded and saved as WEBM (ComfyUI API format)",
+    "required": ["prompt"],
+    "backend_hint": "comfy"
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.2_t2v_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {"clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors", "type": "wan"}
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {"vae_name": "wan_2.1_vae.safetensors"}
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {"text": "{{prompt}}", "clip": ["2", 0]}
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {"text": "{{negative}}", "clip": ["2", 0]}
+  },
+  "6": {
+    "class_type": "EmptyHunyuanLatentVideo",
+    "inputs": {"width": "{{width}}", "height": "{{height}}", "length": "{{frames}}", "batch_size": 1}
+  },
+  "7": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": "{{seed}}",
+      "steps": "{{steps}}",
+      "cfg": 6.0,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": ["1", 0],
+      "positive": ["4", 0],
+      "negative": ["5", 0],
+      "latent_image": ["6", 0]
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {"samples": ["7", 0], "vae": ["3", 0]}
+  },
+  "9": {
+    "class_type": "SaveWEBM",
+    "inputs": {
+      "images": ["8", 0],
+      "filename_prefix": "Lumina_video",
+      "codec": "vp9",
+      "fps": 16.0,
+      "crf": 32.0
+    }
+  }
+}

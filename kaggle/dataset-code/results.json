@@ -1,0 +1,11 @@
+[
+ {
+  "model": "Qwen/Qwen2.5-0.5B",
+  "bulk": "base",
+  "honest_bpp": 16.0,
+  "ppl": 22.487,
+  "ppl_rel": 0.0,
+  "lambada": 0.59,
+  "lam_drop": 0.0
+ }
+]

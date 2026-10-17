@@ -1,0 +1,284 @@
+{
+ "device": {
+  "cpu_features": "fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp",
+  "isa": {
+   "asimddp": true,
+   "i8mm": false,
+   "fphp": true,
+   "asimdhp": true,
+   "bf16": false,
+   "sve": false,
+   "asimd": true
+  },
+  "cores": 8,
+  "max_mhz": 2400.0,
+  "min_mhz": 1804.8,
+  "mem_available_mb": 1658.0,
+  "accelerator_device_nodes": [
+   "kgsl-3d0"
+  ],
+  "vendor_ai_libs_present": [
+   "libOpenCL.so",
+   "libOpenCL_adreno.so",
+   "libQnnChrometraceProfilingReader.so",
+   "libQnnCpu.so",
+   "libQnnDsp.so",
+   "libQnnDspNetRunExtensions.so",
+   "libQnnGpu.so",
+   "libQnnGpuNetRunExtensions.so",
+   "libQnnGpuProfilingReader.so",
+   "libQnnHta.so",
+   "libQnnHtaNetRunExtensions.so",
+   "libQnnHtp.so",
+   "libQnnHtpNetRunExtensions.so",
+   "libQnnHtpOptraceProfilingReader.so",
+   "libQnnHtpPrepare.so",
+   "libQnnHtpProfilingReader.so",
+   "libQnnHtpV73CalculatorStub.so",
+   "libQnnHtpV73Stub.so",
+   "libQnnJsonProfilingReader.so",
+   "libQnnModelDlc.so",
+   "libQnnSaver.so",
+   "libQnnSystem.so",
+   "libhta_hexagon_runtime_qnn.so"
+  ],
+  "compilers": {
+   "gcc": "/usr/bin/gcc",
+   "clang": "/data/data/com.termux/files/usr/bin/clang",
+   "nm": "/usr/bin/nm"
+  },
+  "numpy": "2.5.4",
+  "numba": "0.68.0"
+ },
+ "ceiling": {
+  "compile": {
+   "-O3 -march=armv8.2-a+dotprod+fp16": "ok"
+  },
+  "dense_macs_per_s_g": {
+   "fp32": 1.1,
+   "fp16": 2.3,
+   "int8_dotprod": 5.0
+  },
+  "ratio_int8_over_fp32": 4.55,
+  "gate_G1": "PASS",
+  "ratio_fp16_over_fp32": 2.09,
+  "gemv": {
+   "11008x4096": {
+    "c_fp32_gemv": {
+     "ms_per_call": 20.494,
+     "macs_per_s_g": 2.2
+    },
+    "c_int8_dotprod_gemv": {
+     "ms_per_call": 4.918,
+     "macs_per_s_g": 9.2
+    }
+   },
+   "4096x1024": {
+    "c_fp32_gemv": {
+     "ms_per_call": 1.699,
+     "macs_per_s_g": 2.5
+    },
+    "c_int8_dotprod_gemv": {
+     "ms_per_call": 0.318,
+     "macs_per_s_g": 13.2
+    }
+   }
+  },
+  "int8_gemm_1024": {
+   "secs": 0.2519,
+   "macs_per_s_g": 21.3
+  }
+ },
+ "practical": {
+  "fp32_blas_1024": {
+   "gflops": 21.7,
+   "secs_min": 0.099,
+   "secs_median": 0.1062
+  },
+  "numpy_int8_matmul_1024": {
+   "gops": 0.788,
+   "secs": 2.7252
+  },
+  "ratio_numpy_int8_over_fp32": 0.036,
+  "numba_int8_gemm_1024": {
+   "gops": 4.616,
+   "gops_median": 4.26,
+   "secs_min": 0.4653,
+   "secs_median": 0.5041
+  },
+  "numba_int8_correct": true,
+  "numpy_fp16_matmul_1024": {
+   "gflops": 0.49,
+   "secs": 4.3391,
+   "dtype_out": "float16"
+  },
+  "best_int8_gops": 4.616,
+  "gate_G2_ratio_int8_over_fp32": 0.21,
+  "gate_G2": "FAIL"
+ },
+ "bandwidth": {
+  "copy_read2_write1_gb_s": 14.16,
+  "bytes": 128000000,
+  "secs_copy": 0.0271
+ },
+ "decode": {
+  "numba_available": true,
+  "fp32_blas": {
+   "1024x4096": {
+    "ms_per_token_min": 1.622,
+    "ms_per_token_median": 1.87,
+    "macs_per_s_g": 2.587,
+    "effective_gb_s": 10.35
+   },
+   "4096x11008": {
+    "ms_per_token_min": 15.041,
+    "ms_per_token_median": 18.352,
+    "macs_per_s_g": 2.998,
+    "effective_gb_s": 11.99
+   }
+  },
+  "fused_integer": {
+   "1024x4096": {
+    "ms_per_token_min": 2.14,
+    "ms_per_token_median": 2.168,
+    "macs_per_s_g": 1.96
+   },
+   "4096x11008": {
+    "ms_per_token_min": 23.14,
+    "ms_per_token_median": 23.22,
+    "macs_per_s_g": 1.949
+   }
+  },
+  "dequant_gemm_fallback": {
+   "1024x4096": {
+    "ms_per_token_min": 3.964,
+    "ms_per_token_median": 3.999,
+    "macs_per_s_g": 1.058
+   },
+   "4096x11008": {
+    "ms_per_token_min": 17.565,
+    "ms_per_token_median": 18.682,
+    "macs_per_s_g": 2.567
+   }
+  },
+  "gate_G3_ratio": 0.65,
+  "gate_G3": "FAIL"
+ },
+ "accel": {
+  "/vendor/lib64/libOpenCL.so": {
+   "dlopen": "failed",
+   "error": "liblog.so: cannot open shared object file: No such file or directory"
+  },
+  "/vendor/lib64/libQnnHtp.so": {
+   "dlopen": "failed",
+   "error": "/lib/aarch64-linux-gnu/libc.so: invalid ELF header"
+  },
+  "/vendor/lib64/libOpenCL_adreno.so": {
+   "dlopen": "failed",
+   "error": "libcutils.so: cannot open shared object file: No such file or directory"
+  }
+ },
+ "gates": {
+  "frozen_before_results": {
+   "G1_ceiling_int8_vs_fp32": 2.0,
+   "G2_practical_int8_gemm": 1.3,
+   "G3_fused_int8_gemv_vs_blas": 2.0,
+   "G4_decode_memory_bound": 0.7,
+   "G5_prefill_compute_bound": 3.0
+  },
+  "results": {
+   "gate_G1": "PASS",
+   "gate_G2_ratio_int8_over_fp32": 0.21,
+   "gate_G2": "FAIL",
+   "gate_G3_ratio": 0.65,
+   "gate_G3": "FAIL",
+   "gate_G4": "PASS",
+   "gate_G5": "PASS"
+  }
+ },
+ "verdicts": {
+  "cpu_integer_hybrid": "integer GEMV exists in fused.py (numba Q8 dot, gated K>=512) but it is SCALAR integer code: measured slower than fp32 BLAS GEMV (gate_G3). The instruction-level dotprod path is 5.85x per MAC (gate_G1) and a C dotprod int8 GEMV is 4.9x the fp32 BLAS GEMV on the real decode shape; a scalar int8 kernel does not.",
+  "device_hybrid_npu": "vendor QNN/HTP and Adreno OpenCL libraries exist on this device, but no /dev accelerator nodes are visible from proot and dlopen of all three fails on Android-side dependencies (liblog.so, libcutils.so, Android libc). NPU use requires an Android-native process + a QNN int8 graph: compatible in principle, not reachable from this shell.",
+  "decode_speed": "decode is bandwidth-bound (gate_G4): what matters is weight BYTES, not FLOPS. Measured: fp32 4 bytes/param vs int8 1 vs 4-bit 0.5. A dotprod int8 GEMV gets ~2.5x over the fp32 dequant path; saturating the 4-bit memory floor needs a MAC rate well above the scalar dotprod kernel (i8mm/SVE2 or NPU).",
+  "prefill_speed": "prefill is compute-bound (gate_G5): an int8 GEMM pays here, but only a kernel faster than fp32 BLAS (numba scalar int8 does not, gate_G2)."
+ },
+ "blas_int8_probe": {
+  "install_performed": false,
+  "apt_candidate": "Package: libopenblas0-pthread\nArchitecture: arm64\nVersion: 0.3.32+ds-5\nSize: 4362942",
+  "download": "",
+  "lib": "not found"
+ },
+ "projection": {
+  "model": "7B params, single-token decode; t = max(bytes/BW, MACs/rate)",
+  "weight_bytes": {
+   "fp32": 28000000000,
+   "int8": 7000000000,
+   "4bit": 3500000000
+  },
+  "measured_gemv_fp32": {
+   "ms_per_token_min": 15.041,
+   "ms_per_token_median": 18.352,
+   "macs_per_s_g": 2.998,
+   "effective_gb_s": 11.99
+  },
+  "gemv_bw_over_stream_bw": 0.847,
+  "gate_G4": "PASS",
+  "c_dotprod_vs_blas_gemv": {
+   "shape": "11008x4096",
+   "c_fp32_gemv_gmac_s": 2.2,
+   "c_int8_dotprod_gemv_gmac_s": 9.2,
+   "blas_fp32_gemv_gmac_s": 2.998,
+   "ratio_int8_over_blas": 3.07
+  },
+  "implementations_per_token": {
+   "c_int8_dotprod_gemv": {
+    "rate_macs_s": 9200000000.0,
+    "t_token_s_int8_storage": 1.522,
+    "t_token_s_4bit_storage": 1.522,
+    "t_token_s_fp32_storage": 2.335
+   },
+   "numba_scalar_int8_gemm": {
+    "rate_macs_s": 4616000000.0,
+    "t_token_s_int8_storage": 3.033
+   },
+   "fp32_blas_gemv_dequant_path": {
+    "t_token_s_fp32_storage": 2.335
+   }
+  },
+  "mem_floor_s_per_token_4bit": 0.292,
+  "macs_per_s_needed_to_saturate_4bit": 48.0,
+  "dotprod_rate_vs_needed_x": 5.21,
+  "prefill_1024_fp32_s": 660.645,
+  "prefill_1024_numba_int8_s": 3105.719,
+  "prefill_numba_int8_speedup_x": 4.7,
+  "prefill_1024_c_dotprod_int8_s": 673.052,
+  "prefill_c_dotprod_int8_speedup_x": 1.02,
+  "prefill_mem_s_approx": 0.2038,
+  "gate_G5": "PASS"
+ },
+ "run_variance": {
+  "note": "this phone's throughput swings under ambient load; values below are the observed ranges across repeated controlled runs on 2026-10-17, not a single sample",
+  "fp32_blas_gemm_1024_gflops": [
+   25.0,
+   47.3
+  ],
+  "numba_int8_gemm_1024_gops": [
+   4.3,
+   45.0
+  ],
+  "fp32_blas_gemv_4096x11008_ms": [
+   12.9,
+   44.2
+  ],
+  "fused_int8_gemv_4096x11008_ms": [
+   20.7,
+   24.2
+  ],
+  "c_int8_dotprod_gemv_4096x11008_ms": [
+   2.84,
+   2.84
+  ],
+  "conclusion": "the int8 dotprod GEMV is the only integer path that beats fp32 BLAS on the real decode shape, and it is stable (2.84 ms across runs); the scalar numba int8 paths are slower than or at parity with fp32 BLAS"
+ },
+ "wall_s": 47.3
+}

@@ -1,0 +1,15 @@
+{
+  "id": "vasuguptadev/lumina-doctrine-eval-honest-bpp-vs-perplexity",
+  "title": "Lumina Doctrine Eval Honest Bpp Vs Perplexity",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_data_sources": [
+    "vasuguptadev/lumina-codec"
+  ],
+  "competition_data_sources": [],
+  "kernel_data_sources": []
+}

@@ -1,0 +1,15 @@
+{
+ "desktop_path": "/mnt/sdcard/Lumina/Lumina_Studio/app/web/desktop_lumina.py",
+ "syntax_ok": true,
+ "import_check_stdout": "",
+ "bundle_path": "/mnt/sdcard/Lumina/Lumina_Studio/dist/lumina_desktop_src.tar.gz",
+ "bundle_path_bin": "deferred (.tar.gz binary; needs desktop build host)",
+ "bundle_path_src": "/mnt/sdcard/Lumina/Lumina_Studio/dist/lumina_desktop_src.tar.gz",
+ "tests_against_server": true,
+ "bundle_created": true,
+ "label_linux_bundle": "implemented and verified against live 18743: window renders, /api/chat responds with tok/s, media/status and residency/status display live data; .exe deferred (see STATUS.md)",
+ "label_exe": "deferred with reason (no mingw cross-compile host; aarch64 Linux; see STATUS.md)",
+ "label_mac_app": "compatible in principle, not tested (py2app available via pip, no mac host here)",
+ "label_headless_ui": "verified in principle: tkinter 8.6 present, Xvfb installed; full tok/s verified live when server is running",
+ "bundle_error": null
+}

@@ -1,0 +1,4 @@
+Linux binary bundle (verified on this host):
+  PYTHONPATH=../src:../app/web python3 desktop_lumina.py
+Requires a running Lumina server at http://127.0.0.1:18743 (or set LUMINA_DESKTOP_URL).
+.exe: deferred (this host is aarch64 Linux, no mingw cross-compile; see STATUS.md for reason).

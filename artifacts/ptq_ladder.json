@@ -1,0 +1,46 @@
+{
+  "base_loss": 0.15457210524214637,
+  "results": [
+    {
+      "rung": "int4",
+      "base_loss": 0.15457210524214637,
+      "quant_loss": 0.2506334228175027,
+      "rel_loss_pct": 62.14660622294728,
+      "payload_bytes": 152064,
+      "effective_bpp": 4.125,
+      "convert_seconds": 2.729870080947876
+    },
+    {
+      "rung": "int3",
+      "base_loss": 0.15457210524214637,
+      "quant_loss": 0.9938696717459058,
+      "rel_loss_pct": 542.9812611977757,
+      "payload_bytes": 115200,
+      "effective_bpp": 3.125,
+      "convert_seconds": 2.775907516479492
+    },
+    {
+      "rung": "int2",
+      "base_loss": 0.15457210524214637,
+      "quant_loss": 6.172662583608476,
+      "rel_loss_pct": 3893.3871470137733,
+      "payload_bytes": 78336,
+      "effective_bpp": 2.125,
+      "convert_seconds": 2.4401798248291016
+    },
+    {
+      "rung": "binary",
+      "base_loss": 0.15457210524214637,
+      "quant_loss": 15.49455315726144,
+      "rel_loss_pct": 9924.15871414076,
+      "payload_bytes": 41472,
+      "effective_bpp": 1.125,
+      "convert_seconds": 2.1973376274108887
+    }
+  ],
+  "calib_samples": 16,
+  "base_params": 296192,
+  "seed": 2,
+  "steps": 800,
+  "sharpness": 0.15
+}
